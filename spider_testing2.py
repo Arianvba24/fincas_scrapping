@@ -117,7 +117,7 @@ class AsyncSpiderFunctions:
                 "Accept-Language": "es-ES,es;q=0.9",
                 "Connection": "keep-alive",
                 "Referrer-Policy": "origin-when-cross-origin"
-            })
+            }))
 
             
             tasks = [self.fetch_httpx_html(value,browser,company,indice,client) for value,company,indice in zip(values,company_names,indice_valores)]
