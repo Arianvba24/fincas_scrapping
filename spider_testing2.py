@@ -55,7 +55,7 @@ class AsyncSpiderFunctions:
 
         browser["q"] = value
 
-        browser.submit_selected(headers=headers)
+        browser.submit_selected()
         # ---------------------------------------------------
 
         html_content = browser.page.prettify()
