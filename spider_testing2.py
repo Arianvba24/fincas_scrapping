@@ -49,7 +49,7 @@ class AsyncSpiderFunctions:
     async def fetch_httpx_html(self, value,browser,company,indice,client):
 
 
-        browser.open("https://www.bing.es")
+        browser.get("https://www.bing.es")
 
         browser.select_form('form[action="/search"]')
 
@@ -109,7 +109,7 @@ class AsyncSpiderFunctions:
         async with httpx.AsyncClient() as client:
 
 
-            browser = mechanicalsoup.StatefulBrowser()
+            browser = mechanicalsoup.Browser()
             browser.add_headers({
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
