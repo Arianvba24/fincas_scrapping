@@ -48,11 +48,7 @@ class AsyncSpiderFunctions:
 
     async def fetch_httpx_html(self, value,browser,company,indice,client):
 
-        headers = {
-           
-            'Accept-Language': 'es-ES,es;q=0.9',  # Configura el idioma a español
-    
-        }
+
         browser.open("https://www.bing.es")
 
         browser.select_form('form[action="/search"]')
@@ -113,7 +109,15 @@ class AsyncSpiderFunctions:
         async with httpx.AsyncClient() as client:
 
 
-            browser = mechanicalsoup.StatefulBrowser()
+            browser = mechanicalsoup.StatefuBrowser()
+            browser.add_headers({
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+                "Accept-Language": "es-ES,es;q=0.9",
+                "Connection": "keep-alive",
+                "Referrer-Policy": "origin-when-cross-origin"
+            })
+
             
             tasks = [self.fetch_httpx_html(value,browser,company,indice,client) for value,company,indice in zip(values,company_names,indice_valores)]
             results = await asyncio.gather(*tasks)
