@@ -47,13 +47,21 @@ class AsyncSpiderFunctions:
 
 
     async def fetch_httpx_html(self, value,browser,company,indice,client):
+
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+            'Accept-Language': 'es-ES,es;q=0.9',  # Configura el idioma a español
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'Connection': 'keep-alive'
+        }
         browser.open("https://www.bing.com")
 
         browser.select_form('form[action="/search"]')
 
         browser["q"] = value
 
-        browser.submit_selected()
+        browser.submit_selected(headers=headers)
         # ---------------------------------------------------
 
         html_content = browser.page.prettify()
