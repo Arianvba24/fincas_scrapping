@@ -53,7 +53,7 @@ class AsyncSpiderFunctions:
             'Accept-Language': 'es-ES,es;q=0.9',  # Configura el idioma a español
             'Accept-Encoding': 'identity',
         }
-        browser.open("https://www.bing.com")
+        browser.open("https://www.bing.es")
 
         browser.select_form('form[action="/search"]')
 
